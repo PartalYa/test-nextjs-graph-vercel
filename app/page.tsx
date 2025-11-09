@@ -4,10 +4,10 @@ import PageTransition from "@/src/components/PageTransition";
 
 async function getBitcoinData() {
   "use server";
-
-  const res = await fetch("http://localhost:3000/api/get-bitcoin", {
-    cache: "no-store",
-  });
+  const base = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : `http://localhost:${process.env.PORT ?? 3000}`;
+  const res = await fetch(`${base}/api/get-bitcoin`, { cache: "no-store" });
   return res.json();
 }
 
