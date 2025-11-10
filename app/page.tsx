@@ -7,7 +7,9 @@ async function getBitcoinData() {
   const base = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : `http://localhost:${process.env.PORT ?? 3000}`;
+  console.log("Fetching from:", base);
   const res = await fetch(`${base}/api/get-bitcoin`, { cache: "no-store" });
+  console.log("Response status:", res.status);
   return res.json();
 }
 
