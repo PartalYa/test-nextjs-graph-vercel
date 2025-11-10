@@ -5,7 +5,7 @@ import PageTransition from "@/src/components/PageTransition";
 async function getBitcoinData() {
   "use server";
   const base = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
+    ? `https://test-nextjs-graph-vercel.vercel.app`
     : `http://localhost:${process.env.PORT ?? 3000}`;
   console.log("Fetching from:", base);
   const res = await fetch(`${base}/api/get-bitcoin`, { cache: "no-store" });
